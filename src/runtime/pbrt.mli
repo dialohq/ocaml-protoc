@@ -268,6 +268,8 @@ module Encoder : sig
   val to_bytes : t -> bytes
   (** Extract the content of the encoder to bytes. *)
 
+  val blit_to_buffer : blit_from_bytes:(bytes -> int -> 'buffer -> int -> int -> unit) -> t -> 'buffer -> int -> int
+
   val to_string : t -> string
   (** Extract the content of the encoder to a string. Call this after
       encoding a message into the encoder. *)

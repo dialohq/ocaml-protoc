@@ -373,6 +373,11 @@ module Encoder = struct
   let[@inline] to_bytes self =
     Bytes.sub self.b self.start (cap self - self.start)
 
+  let[@inline] blit_to_buffer ~blit_from_bytes self buffer off =
+    let len = cap self - self.start in
+    blit_from_bytes self.b self.start buffer off len;
+    len
+
   let[@inline] write_chunks w self : unit =
     w self.b self.start (cap self - self.start)
 
